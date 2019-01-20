@@ -1,7 +1,7 @@
 const express = require('express');
 // importing mongoose schemas
-const MuscleGroup = require('../../models/staticData.js').muscleGroup;
-const Exercise = require('../../models/staticData.js').exercise;
+const MuscleGroup = require('../../models/exercises.js').muscleGroup;
+const Exercise = require('../../models/exercises.js').exercise;
 
 const muscleGroupsRouter = express.Router()
 

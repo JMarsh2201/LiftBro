@@ -8,7 +8,11 @@ const UserSchema = new Schema({
   username: String,
   email: String,
   password: String,
-  isDeleted: Boolean
+  isDeleted: {
+    type: Boolean,
+    default: false
+  },
+  workouts: [{type: Schema.Types.ObjectId, ref: 'workout'}]
 })
 
 UserSchema.methods.generateHash = function(password) {
