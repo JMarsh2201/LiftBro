@@ -3,21 +3,14 @@ const Schema = mongoose.Schema;
 
 const MuscleGroupSchema = new Schema({
   name: String,
-  // each exercise in this array has a reference to a muscle group.
-  exercises: [{type: Schema.Types.ObjectId, ref: 'exercise'}],
-  isSelected: {
-    type: Boolean,
-    default: false
-  }
+  exercises: []
 })
 
 const ExerciseSchema = new Schema({
   name: String,
   muscleGroup: {type: Schema.Types.ObjectId, ref: 'muscleGroup'},
-  isSelected: {
-    type: Boolean,
-    default: false
-  }
+  workout: {type: Schema.Types.ObjectId, ref: 'workout'},
+  sets: [{type: Schema.Types.ObjectId, ref: 'set'}]
 })
 
 module.exports = {

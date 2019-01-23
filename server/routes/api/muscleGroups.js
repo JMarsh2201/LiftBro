@@ -12,6 +12,7 @@ muscleGroupsRouter.route('/muscle_groups')
     MuscleGroup.find()
       .populate('exercises')
       .exec((err, muscleGroups) => {
+        console.log(muscleGroups)
         if (err)res.send(err)
         res.json(muscleGroups);
       });
@@ -21,14 +22,11 @@ muscleGroupsRouter.route('/muscle_groups')
   .post((req, res) => {
     const muscleGroup = new MuscleGroup()
     const { body } = req
-    for (let key in body) {
-      if (body.hasOwnProperty(key)) {
-        muscleGroup[key] = body[key];
-      }
-    }
+    muscleGroup.name = body.name
+    muscleGroup.exercises = body.exercises
     muscleGroup.save(err => {
       if (err) res.send(err)
-      res.json({msg: 'Muscle Group Added'})
+      res.json(muscleGroup)
     })
   })
 

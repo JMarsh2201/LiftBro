@@ -7,7 +7,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 // Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment.
 const mongoose = require('mongoose')
-const DB = process.env.MONGODB_URI || 'mongodb://localhost:27017/liftbroapi';
+const DB = process.env.DB_URI || 'mongodb://localhost:27017/liftbroapi';
 
 const app = express()
 
@@ -21,9 +21,11 @@ app.use(cors())
 // routes for user sign in and admin only exercise adding
 const UserSignUpAndSignIn = require('./routes/api/signin.js')
 const muscleGroupsRouter = require('./routes/api/muscleGroups.js')
+const WorkoutRouter = require('./routes/api/workout.js')
 
 app.use('/api', muscleGroupsRouter)
 app.use('/api', UserSignUpAndSignIn)
+app.use('/api', WorkoutRouter)
 
 
 const port = process.env.PORT || 5000

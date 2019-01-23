@@ -7,7 +7,10 @@ const bcrypt = require('bcrypt')
 const UserSchema = new Schema({
   username: String,
   email: String,
-  password: String,
+  password: {
+    type: String,
+    required: true
+  },
   isDeleted: {
     type: Boolean,
     default: false

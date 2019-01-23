@@ -1,9 +1,10 @@
 const express = require('express');
+const UserSignUpAndSignIn = express.Router()
 // import mongoose schemas
 const User = require('../../models/user')
 const UserSession = require('../../models/userSession')
 
-const UserSignUpAndSignIn = express.Router()
+
 
 // confirms that all necessary fields are filled in SignIn and SignUp routes.
 function validateFields(body, isSigningUp) {
