@@ -9,7 +9,21 @@ export default {
         commit('SET_MUSCLEGROUPS', muscleGroups)
       })
       .catch(err => {
-        console.log(err)
+        err.json()
+      })
+  },
+  SignUpNewUser() {
+    axios
+      .post('http://localhost:5000/api/account/signup', {
+        username: 'test',
+        email: this.state.user.email,
+        password: this.state.user.password
+      })
+      .then(data => {
+        data.json()
+      })
+      .catch(err => {
+        err.json()
       })
   }
 }

@@ -9,7 +9,12 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    muscleGroups: []
+    muscleGroups: [],
+    selectedExercises: [],
+    user: {
+      email: '',
+      password: ''
+    }
   },
   actions: actions,
   getters: getters,

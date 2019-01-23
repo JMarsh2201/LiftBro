@@ -6,19 +6,15 @@ const Exercise = require('../../models/exercises.js').exercise;
 const muscleGroupsRouter = express.Router()
 
 muscleGroupsRouter.route('/muscle_groups')
-  // route to view list of muscle groups. Populates exercises array so that
-  // exercise names are available from this route.
   .get((req, res) => {
     MuscleGroup.find()
-      .populate('exercises')
       .exec((err, muscleGroups) => {
         console.log(muscleGroups)
         if (err)res.send(err)
         res.json(muscleGroups);
       });
   })
-  // internal use only. users will not post. adds {name: <muscle group>}
-  // cannot post exercises here
+
   .post((req, res) => {
     const muscleGroup = new MuscleGroup()
     const { body } = req
